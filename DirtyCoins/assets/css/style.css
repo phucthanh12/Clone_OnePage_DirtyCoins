@@ -279,7 +279,6 @@ body {
 
 .section-newarrival {
     padding-top:40px;
-    margin-bottom:64px;
 }
 
 .row {
@@ -304,8 +303,9 @@ body {
     width:33.33333%;
     float: left;
     padding:8px;
-    margin-bottom:72px;
+    margin-bottom:92px;
     height:525px;
+    max-height:590px;
 }
 
 .section-new-card {
@@ -365,7 +365,6 @@ body {
 }
 
 .section-recommend{
-    padding-top:40px;
     margin-bottom:64px;
 }
 
@@ -424,6 +423,7 @@ body {
 
 .btn-recommend {
     display: block;
+    cursor: pointer;
 }
 
 .show-btn{

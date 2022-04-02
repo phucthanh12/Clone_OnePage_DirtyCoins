@@ -29,7 +29,7 @@
         var showMore = document.getElementsByClassName("btn-recommend");
         var outofIndex = document.getElementsByClassName("btn-outofIndex");
         function showMoreProducts () {
-            moreRow[4].className = moreRow[4].className.replace(" row-hide","");
+            moreRow[2].className = moreRow[2].className.replace(" row-hide","");
             showMore[0].style.display = "none";
             outofIndex[0].style.display = "inline-block";
         }

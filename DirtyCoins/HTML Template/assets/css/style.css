@@ -304,8 +304,9 @@ body {
     width:33.33333%;
     float: left;
     padding:8px;
-    margin-bottom:72px;
+    margin-bottom:92px;
     height:525px;
+    max-height:590px;
 }
 
 .section-new-card {

@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="shortcut icon" href="./assets/images/favicon/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./assets/boxicons-2.1.1/css/boxicons.css">
+    <?php
+        //require functions.php file 
+        require('functions.php');
+    ?>
     <title>Dirty Coins</title>
 </head>
 <body>
@@ -14,7 +18,7 @@
     <div id="header">
            <div class="header__container">
             <div class="header-logo">
-                <a href="#"> <img src="./assets/images/logo/logo.png" alt="Dirty Coins Logo"></a>
+                <a href="./"> <img src="./assets/images/logo/logo.png" alt="Dirty Coins Logo"></a>
             </div>
 
             <nav class="header__nav">
@@ -29,11 +33,11 @@
                             <li><a href="#">RESTOCKS</a></li>
                         </ul>
                     </li>
-                    <li><a href="">SALE</a></li>
-                    <li><a href="">NEWS</a></li>
-                    <li><a href="">CONTACT</a></li>
-                    <li><a href="">ABOUT</a></li>
-                    <li><a href="">COLLAB'S</a></li>
+                    <li><a href="#">SALE</a></li>
+                    <li><a href="#">NEWS</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">COLLAB'S</a></li>
                 </ul>
             </nav>
             

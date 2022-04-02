@@ -1,17 +1,23 @@
+ <?php 
+    $item_id=$_GET['item_id']??1;
+    foreach($product->getData() as $item) :
+        if($item['item_id'] == $item_id) :
+ ?>
+ 
  <!-- Main content -->
  <div class="card__container">
         <div class="card">
             <!--Left-->
             <div class="product-img">
                 <div class="img-display">       
-                        <img src="./assets/images/bestseller/bsl6.jpg" alt="">
+                        <img src="<?php echo $item['item_image'] ??"./assets/images/products/1.jpg"; ?>" alt="">
                 </div>
             </div>
             <!--Right-->
             <div class="product-detail">
                 <div class="detail-display">
-                    <h3 class="product-name">DirtyCoins Spray Logo T-Shirt - Black</h3>
-                    <div class="detail-product-price">390.000đ</div>
+                    <h3 class="product-name"><?php echo $item['item_name'] ??"Unknown"; ?></h3>
+                    <div class="detail-product-price"><?php echo $item['item_price'] ??'0'; ?>đ</div>
                     <div class="product-size-wrapper">
                         <div class="size-btn">
                             <div class="product-size">
@@ -47,10 +53,12 @@
                             <strong>Size Chart:</strong>
                         </div>
                         <div>
-                            <img src="./assets/images/size-chart-spray-tee.jpg" alt="">
+                            <img src="../../DirtyCoins/assets/images/size-chart-spray-tee.jpg" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+        <?php endif ?>
+    <?php endforeach; ?>
