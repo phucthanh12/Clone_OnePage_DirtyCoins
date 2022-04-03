@@ -51,7 +51,7 @@
                 <div class="header-icon">
                     <a href="">
                         <i class='bx bxs-cart'></i>
-                        <span>5</span>
+                        <span><?php echo count($product->getData('cart'));?></span>
                     </a>
                 </div>
             </div>

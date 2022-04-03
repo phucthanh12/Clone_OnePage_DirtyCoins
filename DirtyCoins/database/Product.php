@@ -13,7 +13,7 @@ class Product
     //fetch product data using getData Method
     public function getData($table = 'product') { //khai báo biến $table để hàm này tái sử dụng nhiều lần
         $result = $this->db->conn->query("SELECT * FROM {$table}");  //chổ này this gọi db->conn nếu có thực hiện query - nếu không có tham số db truyền thì mặc định sẽ là null 
-        
+
         $resultArray = array();
 
         //fetch product data one by one

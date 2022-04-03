@@ -1,0 +1,12 @@
+login authentication thành công {
+    chuyển trang thì thay vì dùng header 
+    form method post bên trong là input hidden 
+    action của form gửi đến trang index.php để lưu lại $mới = user_id $
+    và ở mỗi dòng sản phẩm làm tương tự đến trang productDetail.php 
+    và ở đó lưu biến $user_id bằng biến post đó là ok
+
+    -->việc userid như vậy có thì đơn hàng dựa trên user_id vẫn sẽ ở db 
+    tránh việc sau một thời gian mất db
+    -->ngoài ra không yêu cầu thanh toán phải xóa db từ user nên 
+    không quan phần xóa data sau khi xác nhận thanh toán SQL Delete
+}

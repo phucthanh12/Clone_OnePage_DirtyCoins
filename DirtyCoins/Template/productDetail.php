@@ -1,6 +1,16 @@
  <?php 
+    //request method post
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(isset($_POST['addtoCart-btn'])){
+            $Cart->addToCart($_POST['user_id'],$_POST['item_id']);
+        }
+    }
+
+    $product_shuffle = $product->getData();
+    shuffle($product_shuffle);
+
     $item_id=$_GET['item_id']??1;
-    foreach($product->getData() as $item) :
+    foreach($product_shuffle as $item) :
         if($item['item_id'] == $item_id) :
  ?>
  
@@ -35,8 +45,10 @@
                         </div>
                     </div>
                     <div class="btn-addtoCart">
-                        <form>
-                            <button>Thêm vào giỏ hàng</button>
+                        <form method="post">
+                            <input type="hidden" name="user_id" value="<?php echo $item['user_id']??'1'; ?>"/>
+                            <input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>"/>   
+                            <button type="submit" name="addtoCart-btn">Thêm vào giỏ hàng</button>
                         </form>
                     </div>
                     <div class="product-detail-content">
