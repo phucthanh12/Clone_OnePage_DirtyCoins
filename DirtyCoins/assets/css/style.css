@@ -1012,7 +1012,7 @@ body {
 }
 
 .product-size button:hover {
-    background-color:#ccc;
+    background-color:rgb(224, 192, 192);
 }
 
 .btn-addtoCart {
@@ -1020,7 +1020,17 @@ body {
     margin-bottom:20px;
 }
 
-.btn-addtoCart button{
+.btn-addtoCart input[type="number"] {
+    padding:4px;
+    width: 80%;
+    text-align: center;
+    background-color:transparent;
+    border:1px solid #000;
+    border-radius:25px;
+    font-size: 15px;
+}
+
+.btn-addtoCart .submit-btn{
     margin-top: 10px;
     background: #000;
     color: #fff;
@@ -1032,7 +1042,6 @@ body {
     cursor: pointer;
 }
 
-.btn-addtoCart button:hover {
-    opacity:.75;
+.btn-addtoCart .submit-btn:hover {
+    opacity:0.75;
 }
-

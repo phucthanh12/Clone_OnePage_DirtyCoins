@@ -49,9 +49,9 @@
                     <i class='bx bxs-user'></i>
                 </div>
                 <div class="header-icon">
-                    <a href="">
+                    <a href="cart.php">
                         <i class='bx bxs-cart'></i>
-                        <span><?php echo count($product->getData('cart'));?></span>
+                        <span><?php echo count($product->getData("cart"));?></span>
                     </a>
                 </div>
             </div>

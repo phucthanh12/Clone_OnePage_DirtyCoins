@@ -42,15 +42,9 @@ class Cart {
             if($result){
                 //reload page
                 // header("Location".$_SERVER['PHP_SELF']);
-                header("Location:./");
+                header("Location:cart.php");
             }
         }
-    }
-    public function getRow($table = 'cart'){
-        $result = $this->db->conn->query("SELECT * FROM {$table}");
-
-        $rowcount = mysqli_num_rows($result);
-        return $rowcount;
     }
 }
 

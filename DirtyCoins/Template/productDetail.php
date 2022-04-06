@@ -1,12 +1,14 @@
  <?php 
+    // $user_id = $_SESSION['user_id'];
+    
     //request method post
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if(isset($_POST['addtoCart-btn'])){
-            $Cart->addToCart($_POST['user_id'],$_POST['item_id']);
-        }
-    }
+    // if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    //     if(isset($_POST['addtoCart-btn'])){
+    //         $Cart->addToCart($_POST['user_id'],$_POST['item_id']);
+    //     }
+    // }
 
-    $product_shuffle = $product->getData();
+    $product_shuffle = $product->getData();   
     shuffle($product_shuffle);
 
     $item_id=$_GET['item_id']??1;
@@ -45,10 +47,10 @@
                         </div>
                     </div>
                     <div class="btn-addtoCart">
-                        <form method="post">
-                            <input type="hidden" name="user_id" value="<?php echo $item['user_id']??'1'; ?>"/>
+                        <form action="cart.php" method="post">
+                            <input type="number" name="item_soluong" min="1" placeholder="1" value="1">
+                            <input type="submit" class="submit-btn" name="addtoCart" value="Thêm vào giỏ hàng"/>
                             <input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>"/>   
-                            <button type="submit" name="addtoCart-btn">Thêm vào giỏ hàng</button>
                         </form>
                     </div>
                     <div class="product-detail-content">
