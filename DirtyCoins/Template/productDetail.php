@@ -10,7 +10,7 @@
 
     $product_shuffle = $product->getData();   
     shuffle($product_shuffle);
-
+    
     $item_id=$_GET['item_id']??1;
     foreach($product_shuffle as $item) :
         if($item['item_id'] == $item_id) :
@@ -51,6 +51,8 @@
                             <input type="number" name="item_soluong" min="1" placeholder="1" value="1">
                             <input type="submit" class="submit-btn" name="addtoCart" value="Thêm vào giỏ hàng"/>
                             <input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>"/>   
+                            <input type="hidden" name="item_price" value="<?php echo $item['item_price']; ?>"/>
+                            <input type="hidden" name="item_img" value="<?php echo $item['item_img']; ?>">  
                         </form>
                     </div>
                     <div class="product-detail-content">

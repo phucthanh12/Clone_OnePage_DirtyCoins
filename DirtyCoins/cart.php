@@ -7,20 +7,14 @@ if(!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
 
 if(isset($_POST['addtoCart']) && $_POST['addtoCart']){
     $item_id = $_POST['item_id'];
-    $item_qty = $_POST['item_soluong'];
-    $sp = [$item_id,$item_qty];
+    $item_qty = (int) ($_POST['item_soluong']);
+    $item_price=(int) ($_POST['item_price']);
+    $sp = [$item_id,$item_price,$item_qty];
     $_SESSION['cart'][] = $sp; // lưu nhiều sản phẩm
     $cart = $_SESSION['cart'];
-    // var_dump($_SESSION['cart']);  
 }
 
-$product_shuffle = $product->getData();
-// var_dump($product_shuffle); cả 2 đều là array
-foreach($product_shuffle as $item){
-    if($item['item_id'] == $cart[0]) {   
-        echo "Fetch thành công";
-    }
-}
+
 
 ?>
 <!DOCTYPE html>

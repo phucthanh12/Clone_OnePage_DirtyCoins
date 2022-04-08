@@ -1,10 +1,17 @@
+<?php
+    session_start();
+    $user = array();
+    if(isset($_SESSION['user'])) $user = $_SESSION['user'] ?? [];
+    // if(isset($_SESSION['user']))
+    // var_dump($user); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="../DirtyCoins/assets/css/style.css">
     <link rel="shortcut icon" href="./assets/images/favicon/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./assets/boxicons-2.1.1/css/boxicons.css">
     <?php
@@ -46,7 +53,19 @@
                     <i class='bx bx-search'></i>
                 </div>
                 <div class="header-icon">
-                    <i class='bx bxs-user'></i>
+                    <i class='bx bxs-user'>
+                        <!-- demo full case -->
+                        <?php if(!isset($_SESSION['user'])){  ?>
+                            <ul class="user-nav">
+                                <li><a href="sign_in.php">Đăng nhập</a></li>
+                            </ul>
+                        <?php }else {?>   
+                            <ul class="user-nav">
+                                <li><a href="account.php">Trang cá nhân</a></li>
+                                <li><a href="sign_out.php">Đăng xuất</a></li>
+                            </ul>   
+                            <?php } ?>
+                    </i>
                 </div>
                 <div class="header-icon">
                     <a href="cart.php">
