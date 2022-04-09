@@ -1,16 +1,17 @@
  <?php 
     // $user_id = $_SESSION['user_id'];
     
-    //request method post
+    // // request method post
     // if($_SERVER['REQUEST_METHOD'] == 'POST') {
     //     if(isset($_POST['addtoCart-btn'])){
     //         $Cart->addToCart($_POST['user_id'],$_POST['item_id']);
     //     }
     // }
+    ob_start();
 
     $product_shuffle = $product->getData();   
     shuffle($product_shuffle);
-    
+
     $item_id=$_GET['item_id']??1;
     foreach($product_shuffle as $item) :
         if($item['item_id'] == $item_id) :
@@ -47,13 +48,20 @@
                         </div>
                     </div>
                     <div class="btn-addtoCart">
+                    <?php if(isset($_SESSION['user'])){  ?>
                         <form action="cart.php" method="post">
                             <input type="number" name="item_soluong" min="1" placeholder="1" value="1">
-                            <input type="submit" class="submit-btn" name="addtoCart" value="Thêm vào giỏ hàng"/>
+                            <input type="submit" class="submit-btn" name="submit" value="Thêm vào giỏ hàng"/>
+                            <input type="hidden" name="addtoCart" value="add">
                             <input type="hidden" name="item_id" value="<?php echo $item['item_id']; ?>"/>   
-                            <input type="hidden" name="item_price" value="<?php echo $item['item_price']; ?>"/>
-                            <input type="hidden" name="item_img" value="<?php echo $item['item_img']; ?>">  
+                            <input type="hidden" name="item_price" value="<?php echo $item['item_price']; ?>"/>           
                         </form>
+                    <?php }else{ ?>
+                        <?php ?>
+                        <form>  
+                            <?php header("Location:sign_in.php"); ?>        
+                        </form>
+                        <?php }?>
                     </div>
                     <div class="product-detail-content">
                         <div>
@@ -77,4 +85,4 @@
         </div>
     </div>
         <?php endif ?>
-    <?php endforeach; ?>
+    <?php endforeach;?>

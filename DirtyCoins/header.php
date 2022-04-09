@@ -70,7 +70,7 @@
                 <div class="header-icon">
                     <a href="cart.php">
                         <i class='bx bxs-cart'></i>
-                        <span><?php echo count($product->getData("cart"));?></span>
+                        <span><?php  $sohoadon ?></span>
                     </a>
                 </div>
             </div>
