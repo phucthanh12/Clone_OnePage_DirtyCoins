@@ -33,6 +33,12 @@ aside ul {
     padding: 0;
 }
 
+aside > label {
+    font-size:24px; 
+    font-weight:600;
+    text-shadow:3px 3px 5px #f1f1f1;
+}
+
 article {
     float: left;
     padding-left: 200px;
@@ -89,6 +95,7 @@ section::after {
     text-align: center;
     transition: all 0.2s;
     background-color: white;
+    cursor: pointer;
 }
 
 .btn1:hover {
