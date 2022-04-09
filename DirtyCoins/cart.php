@@ -59,14 +59,14 @@ var_dump($cart);
 if(count($cart)==0){
     echo "<h1 style='margin-top:90px;'>Giỏ Hàng Trống</h1>";
 } else {
-    echo "<center style='margin-top:90px;'><h2>GIỎ HÀNG</h2></center>";
+    echo "<center style='margin-top:90px;'><h2 style='margin:24px 0;'>GIỎ HÀNG</h2></center>";
     echo "<form method='post'>";
     echo "<table style='width:100% ; height:300px' border='2' cellspacing='2'";
     echo "<tr>
     <th>Sản Phẩm</th>
     <th>Giá</th>
     </th>
-    <th style='width:50px;'>Số lượng</th>
+    <th style='width:90px;'>Số lượng</th>
     <th>Thành tiền</th>
     </tr>";
     $dsma = implode(",",array_keys($cart));
@@ -80,7 +80,7 @@ if(count($cart)==0){
             echo "<tr>";
             echo "<td style='text-align: center;'>
             <p><img src='$anh' height='200px' width='150px' alt='anh' /></p>
-            <div style='margin-top:16px;'>{$row['item_name']}</div>
+            <div style='margin-top:16px; text-shadow:2px 2px 3px #c1c1c1; opacity:0.9;'>{$row['item_name']}</div>
             </td>";
             $gia= number_format($row['item_price'],3);
             echo "<td align='right'>{$gia}đ</td>";
@@ -97,7 +97,7 @@ if(count($cart)==0){
     echo "<tr><td colspan='3'>Tổng tiền</td><td align='right'>{$strtongtien} đ</td></tr>";
     echo "<tr>";
     echo "<td colspan='4' align='right'>";
-    echo "<input style='background-color:green ; border-radius: 15px; min-width:50px; padding:15px; color:#fff' type='submit' name='submit' value='Cập nhật'>";
+    echo "<input style='background-color:green ; border-radius: 16px; min-width:50px; padding:12px; color:#fff' type='submit' name='submit' value='Cập nhật'>";
     echo "<input type='hidden' name='addtoCart' value='update'>";
     echo "</td>";
     echo "</tr>";
@@ -109,10 +109,11 @@ if(count($cart)==0){
 
 <p>
 <form method="post" style="display: inline;">
-<input style="background-color:#4F4F4F ; border-radius: 15px; min-width:80px; padding:15px; color:#fff" type="submit" name="submit" value="Xóa">
+<input style="margin-left:4px; margin-top:8px; background-color:rgb(198,28,28) ; border-radius: 10px; min-width:80px; padding:12px; color:#fff" type="submit" name="submit" value="Xóa">
 <input type="hidden" name="addtoCart" value="delete">
 </form>
-<button style="background-color:#00CCFF ; border-radius: 15px; min-width:80px; padding:15px; color:#fff" onclick="window.location.href='dathang.php'">Đặt hàng</button>
+<button style="margin-left:4px; margin-top:8px; background-color:rgb(212,92,33) ; border-radius: 10px; min-width:120px; padding:12px; color:#fff" onclick="window.location.href='dathang.php'">Đặt hàng</button>
+<button style="margin-left:4px; margin-top:8px; background-color:#00CCFF ; border-radius: 10px; min-width:80px; padding:12px; color:#fff" onclick="window.location.href='index.php'">Tiếp tục mua hàng</button>
 </p>
 </body>
 </html>

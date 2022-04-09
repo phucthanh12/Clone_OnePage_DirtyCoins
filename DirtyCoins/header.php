@@ -31,7 +31,7 @@
             <nav class="header__nav">
                 <ul>
                     <li>
-                        <a href="" class="shop-list">SHOP</a>
+                        <a href="./" class="shop-list">SHOP</a>
                         <ul class="sub-nav">
                             <li><a href="#">TOP</a></li>
                             <li><a href="#">BOTTOM</a></li>

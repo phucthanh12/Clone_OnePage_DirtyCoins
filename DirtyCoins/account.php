@@ -27,8 +27,7 @@
                 <label for="">Tên tài khoản: </label> <b><?php echo $username['username'] ?> </b>
             </div>
             <br><br>
-            <a href="account/address.php"><button class="btn1" >Sổ địa chỉ</button></a> <br><br>
-            <a href="sign_in.php"><button class="btn1"  style="padding: 0.6em 0.8em;">Thoát</button></a>
+            <a href="sign_out.php"><button class="btn1"  style="padding: 0.6em 0.8em;">Thoát</button></a>
         </aside>
         <article>
             <h1 id="thongtintaikhoan">THÔNG TIN TÀI KHOẢN</h1><br>
