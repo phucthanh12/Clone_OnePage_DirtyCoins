@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 02, 2022 lúc 06:10 PM
+-- Thời gian đã tạo: Th4 11, 2022 lúc 06:48 PM
 -- Phiên bản máy phục vụ: 10.4.17-MariaDB
 -- Phiên bản PHP: 8.0.2
 
@@ -30,7 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL
+  `item_id` int(11) NOT NULL,
+  `item_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `item_price` double(10,3) NOT NULL,
+  `item_quantity` int(11) NOT NULL,
+  `item_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -78,15 +82,25 @@ INSERT INTO `product` (`item_id`, `item_name`, `item_price`, `item_tag`, `item_i
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Cấu trúc bảng cho bảng `users`
 --
 
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `username` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `roleid` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(250) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `password`) VALUES
+(3, 'Nguyễn Phúc Thanh', 'thanh', 'thanh@gmail.com', '$2y$10$trvd/jmcznYOdf8cmyqz4eNG0zd7addVXpWZA0AyviIl4gpG/iK2q'),
+(4, 'Tân', 'tan', 'tan@gmail.com', '$2y$10$1vRTDuTakj1hK8u32zr8buNuNcckdvhXwcaBq0ynDhO5PJistK1NK'),
+(5, 'Nguyễn Hữu Tân', 'tanlaptrinhweb', 'tan123@gmail.com', '$2y$10$tsr/4eZWR7kFskgk.CRBYOcwiySZjeRG21WmbFpsVaqdkmW94sy/y');
 
 -- --------------------------------------------------------
 
@@ -117,10 +131,11 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`item_id`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Chỉ mục cho bảng `users`
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Chỉ mục cho bảng `wishlist`
@@ -133,16 +148,22 @@ ALTER TABLE `wishlist`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
   MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- AUTO_INCREMENT cho bảng `users`
 --
-ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
