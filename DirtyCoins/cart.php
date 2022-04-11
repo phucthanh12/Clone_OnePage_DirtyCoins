@@ -44,6 +44,11 @@ if(isset($_POST["addtoCart"]) && $_POST["addtoCart"]){
         $cart = array();
         $_SESSION["cart"] = $cart;
     }
+    elseif ($addtoCart == "afterpaid"){
+        sleep(5);
+        $cart = array();
+        $_SESSION["cart"] = $cart;
+    }
 }
 // var_dump($cart);
 
@@ -77,27 +82,31 @@ if(count($cart)==0){
     $conn = $db->conn;
     $result = $conn->query("select * from product where item_id in ($dsma)");
     $tongtien = 0;
-    while($row = $result->fetch_array()){
-            $ma = $row["item_id"];
-            $anh = $row["item_image"];
-            $ten = $row['item_name'];
-            $gia = $row['item_price'];
-            echo "<tr>";
-            echo "<td style='text-align: center;'>
-            <p><img src='$anh' height='200px' width='150px' alt='anh' /></p>
-            <div style='margin-top:16px; text-shadow:2px 2px 3px #c1c1c1; opacity:0.9;'>{$row['item_name']}</div>
-            </td>";
-            $gia= number_format($row['item_price'],3);
-            echo "<td align='right'>{$gia}đ</td>";
-            echo "<td align='right'>";
-            echo "<input type='number' name='dssl[{$ma}]' value='{$cart[$ma]}' min='0' style='width:40px; text-align: center;'>";
-            echo "</td>";
-            $thanhtien = $cart[$ma] * $row["item_price"];
-            $tongtien = $tongtien + $thanhtien;
-            $thanhtien = number_format($thanhtien,3);
-            echo "<td  align='right'>{$thanhtien} đ</td>";
-            echo "</tr>"; 
-    }
+        while($row = $result->fetch_array()){
+            if ($dsma === false) {
+                $ma = $row["item_id"];
+                $anh = $row["item_image"];
+                $ten = $row['item_name'];
+                $gia = $row['item_price'];
+                echo "<tr>";
+                echo "<td style='text-align: center;'>
+                <p><img src='$anh' height='200px' width='150px' alt='anh' /></p>
+                <div style='margin-top:16px; text-shadow:2px 2px 3px #c1c1c1; opacity:0.9;'>{$row['item_name']}</div>
+                </td>";
+                $gia= number_format($row['item_price'],3);
+                echo "<td align='right'>{$gia}đ</td>";
+                echo "<td align='right'>";
+                echo "<input type='number' name='dssl[{$ma}]' value='{$cart[$ma]}' min='0' style='width:40px; text-align: center;'>";
+                echo "</td>";
+                $thanhtien = $cart[$ma] * $row["item_price"];
+                $tongtien = $tongtien + $thanhtien;
+                $thanhtien = number_format($thanhtien,3);
+                echo "<td  align='right'>{$thanhtien} đ</td>";
+                echo "</tr>"; 
+            } else {
+                echo "<h1 style='margin-top:90px; margin-bottom:24px;'>Giỏ Hàng Hiện Đang Trống</h1>";
+            }
+        }
     $strtongtien = number_format($tongtien,3);
     echo "<tr><td colspan='3' style='padding:4px;'>Tổng tiền</td><td align='right'>{$strtongtien} đ</td></tr>";
     echo "<tr>";
@@ -119,7 +128,7 @@ if(count($cart)==0){
     </form>
     <form method="post" style="display:inline;" action="dathang.php">
         <input type="submit" name="buy-btn" value='Đặt hàng' style="cursor:pointer;margin-left:4px; margin-top:8px; background-color:rgb(212,92,33) ; border-radius: 10px; min-width:120px; padding:12px; color:#fff" onclick="window.location.href='dathang.php'"/>
-        <input type="hidden" name='cart-id' value="<?php echo $dsma ?>"  >
+        <input type="hidden" name='cart-id' value="<?php echo $dsma??null?>"  >
     </form>
         <button style="cursor:pointer;margin-left:4px; margin-top:8px; background-color:#00CCFF ; border-radius: 10px; min-width:80px; padding:12px; color:#fff" onclick="window.location.href='index.php'">Tiếp tục mua hàng</button>
 </span>

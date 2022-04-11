@@ -55,7 +55,10 @@
         
     </div>
     <div>
-        <div onclick="showSuccesToast();" class="btn btn--success" >Thanh toán</div>
+        <form method="post" action="cart.php">
+          <input type='submit' onclick="showSuccesToast();" class="btn btn--success" value="Thanh toán" >
+          <input type="hidden" name="addtoCart" value="afterpaid">
+        </form>
     </div>
     <script type="text/javascript" src="../DirtyCoins/assets/js/BEM.js"></script>
 </body>
