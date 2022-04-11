@@ -1,13 +1,13 @@
  <?php 
-    // $user_id = $_SESSION['user_id'];
+    $user = array();
+    if(isset($_SESSION['user'])) $user = $_SESSION['user'] ?? [];
     
-    // // request method post
-    // if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //     if(isset($_POST['addtoCart-btn'])){
-    //         $Cart->addToCart($_POST['user_id'],$_POST['item_id']);
-    //     }
-    // }
-    ob_start();
+    // request method post
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if(isset($_POST['buy-btn'])){
+            $Cart->addToCart($_POST['user_id'],$_POST['item_id']);
+        }
+    }
 
     $product_shuffle = $product->getData();   
     shuffle($product_shuffle);

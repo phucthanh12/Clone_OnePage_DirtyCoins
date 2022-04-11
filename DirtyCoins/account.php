@@ -18,13 +18,13 @@
     //include header.php file //
 
     $user = [];
-    if(isset($_SESSION['user'])? $username =$_SESSION['user']:[]);
+    if(isset($_SESSION['user'])? $user =$_SESSION['user']:[]);
     ?>
     <section>
         <aside >
             <label>Tài khoản của tôi</label><br><br>
             <div action="" method="POST" role="Form">
-                <label for="">Tên tài khoản: </label> <b><?php echo $username['username'] ?> </b>
+                <label for="">Tên tài khoản: </label> <b><?php echo $user['username'] ?> </b>
             </div>
             <br><br>
             <a href="sign_out.php"><button class="btn1"  style="padding: 0.6em 0.8em;">Thoát</button></a>
@@ -33,10 +33,10 @@
             <h1 id="thongtintaikhoan">THÔNG TIN TÀI KHOẢN</h1><br>
             <div id="article-font-size">
                 <div action="" method="POST" role="Form">
-                    <label for="">Xin chào,</label> <b><?php echo $username['name'] ?> </b>
+                    <label for="">Xin chào,</label> <b><?php echo $user['name'] ?> </b>
                 </div>
                 <br><br>
-                <label><b>Đơn hàng gần nhất</b></label>  
+                <label style="display:inline-block;margin-bottom:12px;"><b style="font-size:16px;">Đơn hàng gần nhất</b></label>  
                 <div class="container">
                     <div class="row" id="donhang">
                         <b>
@@ -48,9 +48,7 @@
                         </b>
                     </div>
                 </div>
-                <label style="margin-left: 10px;">Không có đơn hàng nào.</label>
-                
-
+                <label style="margin-left: 10px;"></label>
             </div>
         </article>
 

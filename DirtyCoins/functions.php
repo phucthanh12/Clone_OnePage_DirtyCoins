@@ -1,4 +1,5 @@
 <?php
+ob_start();
 //Require MySQL connection
 require('database/DBController.php');
 
@@ -6,7 +7,7 @@ require('database/DBController.php');
 require('database/Product.php');
 
 // //Require Cart class
-// require('database/Cart.php');
+require('database/Cart.php');
 
 // DBController Object - trong DBcontroller có __construct thì khi khởi tạo,biến sẽ được gán giá trị mới để tạo connect từ phương thức mysqli_connect()
 $db = new DBController();
@@ -15,7 +16,7 @@ $db = new DBController();
 $product = new Product($db);
 
 // //Cart object
-// $Cart = new Cart($db);
+$Cart = new Cart($db);
 
 ?>
 

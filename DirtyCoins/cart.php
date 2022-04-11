@@ -1,11 +1,14 @@
 <?php 
    include('header.php');
 ?>
-<?php   
+<?php
+    $user = [];
+    if(isset($_SESSION['user'])? $user =$_SESSION['user']:[]);
+    $user_id = $user['id'];
 
     // request method post
+    $item_so = $_POST['item_dssl'];
    
-
 $cart = array();
 if(isset($_SESSION["cart"])){
     $cart = $_SESSION["cart"];
@@ -16,7 +19,7 @@ if(isset($_SESSION["cart"])){
 if(isset($_POST["addtoCart"]) && $_POST["addtoCart"]){
     $addtoCart = $_POST["addtoCart"];
     if($addtoCart == "add") {
-        // addt vào giỏ hàng
+        // add vào giỏ hàng
         $item_id = $_POST["item_id"];
         $item_soluong = $_POST["item_soluong"]; 
 
@@ -42,7 +45,8 @@ if(isset($_POST["addtoCart"]) && $_POST["addtoCart"]){
         $_SESSION["cart"] = $cart;
     }
 }
-var_dump($cart);
+// var_dump($cart);
+
 ?>
 <?php 
 
@@ -70,13 +74,14 @@ if(count($cart)==0){
     <th>Thành tiền</th>
     </tr>";
     $dsma = implode(",",array_keys($cart));
-    $db = new DBController();
     $conn = $db->conn;
     $result = $conn->query("select * from product where item_id in ($dsma)");
     $tongtien = 0;
     while($row = $result->fetch_array()){
             $ma = $row["item_id"];
             $anh = $row["item_image"];
+            $ten = $row['item_name'];
+            $gia = $row['item_price'];
             echo "<tr>";
             echo "<td style='text-align: center;'>
             <p><img src='$anh' height='200px' width='150px' alt='anh' /></p>
@@ -94,9 +99,9 @@ if(count($cart)==0){
             echo "</tr>"; 
     }
     $strtongtien = number_format($tongtien,3);
-    echo "<tr><td colspan='3'>Tổng tiền</td><td align='right'>{$strtongtien} đ</td></tr>";
+    echo "<tr><td colspan='3' style='padding:4px;'>Tổng tiền</td><td align='right'>{$strtongtien} đ</td></tr>";
     echo "<tr>";
-    echo "<td colspan='4' align='right'>";
+    echo "<td colspan='4' align='right' style='padding:4px;'>";
     echo "<input style='background-color:green ; border-radius: 16px; min-width:50px; padding:12px; color:#fff' type='submit' name='submit' value='Cập nhật'>";
     echo "<input type='hidden' name='addtoCart' value='update'>";
     echo "</td>";
@@ -107,14 +112,17 @@ if(count($cart)==0){
 }
 ?>
 
-<p>
-<form method="post" style="display: inline;">
-<input style="margin-left:4px; margin-top:8px; background-color:rgb(198,28,28) ; border-radius: 10px; min-width:80px; padding:12px; color:#fff" type="submit" name="submit" value="Xóa">
-<input type="hidden" name="addtoCart" value="delete">
-</form>
-<button style="margin-left:4px; margin-top:8px; background-color:rgb(212,92,33) ; border-radius: 10px; min-width:120px; padding:12px; color:#fff" onclick="window.location.href='dathang.php'">Đặt hàng</button>
-<button style="margin-left:4px; margin-top:8px; background-color:#00CCFF ; border-radius: 10px; min-width:80px; padding:12px; color:#fff" onclick="window.location.href='index.php'">Tiếp tục mua hàng</button>
-</p>
+<span>
+    <form method="post" style="display: inline;">
+        <input style="cursor:pointer; margin-left:4px; margin-top:8px; background-color:rgb(198,28,28) ; border-radius: 10px; min-width:80px; padding:12px; color:#fff;"  type="submit" name="submit" value="Xóa">
+        <input type="hidden" name="addtoCart" value="delete">
+    </form>
+    <form method="post" style="display:inline;" action="dathang.php">
+        <input type="submit" name="buy-btn" value='Đặt hàng' style="cursor:pointer;margin-left:4px; margin-top:8px; background-color:rgb(212,92,33) ; border-radius: 10px; min-width:120px; padding:12px; color:#fff" onclick="window.location.href='dathang.php'"/>
+        <input type="hidden" name='cart-id' value="<?php echo $dsma ?>"  >
+    </form>
+        <button style="cursor:pointer;margin-left:4px; margin-top:8px; background-color:#00CCFF ; border-radius: 10px; min-width:80px; padding:12px; color:#fff" onclick="window.location.href='index.php'">Tiếp tục mua hàng</button>
+</span>
 </body>
 </html>
 <br>

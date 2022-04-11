@@ -13,11 +13,11 @@ class Cart {
         if($this->db->conn != null) //check conn của class Cart 
         {
             if($params != null)   //check nếu có truyền array vào ,ở dưới xử lý
-            {
+            {   
 
                 //Get columns or keys of an array
                 $columns = implode(",",array_keys($params));  //implode kết hợp các giá trị của chuỗi lại thành ?string và ngăn cách bởi ,
-                
+        
                 //Get values of an array
                 $values = implode(",",array_values($params));
 
@@ -26,18 +26,23 @@ class Cart {
                 
                 $result = $this->db->conn->query($query_string);
                 return $result;
-            }
+            } 
         }
     }
 
-    public function addToCart($user_id ,$item_id)  //truyền id chạy hàm insertIntoCart
+    public function addToCart($user_id ,$item_id,$item_name,$item_price,$item_qty,$item_quantity)  //truyền id chạy hàm insertIntoCart
     {
-        if(isset($user_id) && isset($item_id)){
+        if(isset($user_id) && isset($item_id)
+        && isset($item_name) && isset($item_price)
+        && isset($item_qty) && isset($item_image)){
             $params = array(
                 "user_id" => $user_id ,
                 "item_id" => $item_id,
+                "item_name"=>$item_name,
+                "item_price"=>$item_price,
+                "item_image"=>$item_image,
+                "item_quantity"=>$item_quantity,
             );
-
             $result = $this->insertIntoCart($params);
             if($result){
                 //reload page
