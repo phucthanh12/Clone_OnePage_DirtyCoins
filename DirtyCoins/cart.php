@@ -83,7 +83,7 @@ if(count($cart)==0){
     $result = $conn->query("select * from product where item_id in ($dsma)");
     $tongtien = 0;
         while($row = $result->fetch_array()){
-            if ($dsma === false) {
+            if ($dsma != null) {
                 $ma = $row["item_id"];
                 $anh = $row["item_image"];
                 $ten = $row['item_name'];
