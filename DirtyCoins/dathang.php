@@ -1,5 +1,5 @@
 <?php 
-include('header.php');
+    include('header.php');
     $user = array();
     if(isset($_SESSION['user'])) $user = $_SESSION['user'] ?? [];
 
@@ -19,6 +19,7 @@ include('header.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/BEM.css">
     <title>Document</title>
 </head>
 <body>
@@ -27,15 +28,16 @@ include('header.php');
             <!--Container-->
             <div class="product">
                 <?php while($product = $result->fetch_array()) { ?>
-                <?php $ma = $product["item_id"];
+                <?php 
+                $ma = $product["item_id"];
                 $anh = $product["item_image"];
                 $ten = $product['item_name'];
                 $gia = $product['item_price']; 
                 ?>   
                 <div class="section-col">
-                    <div class="section-bestsl-card">
+                    <div class="section-bestsl-card"style="max-width:350px">
                         <p class="bestsl-card-title"><?php echo $product['item_tag']??"New Arrival"; ?></p>
-                        <a href="<?php printf('%s?item_id=%s','product.php',$item['item_id']);?>"><img src="<?php echo $product['item_image'] ??"./assets/images/products/1.jpg"; ?>" alt=""></a>
+                        <img src="<?php echo $product['item_image'] ??"./assets/images/products/1.jpg"; ?>" alt="">
                         <h4 class="bestsl-card-name"><?php echo $product['item_name']??"Unknown"; ?></h4>
                         <p class="bestsl-card-price"><?php echo $product['item_price']??"0";?>đ</p>
                         <div class="bestsl-circle-bg">
@@ -49,5 +51,12 @@ include('header.php');
             </div>
         </div>
     </div>
+    <div id="toast">
+        
+    </div>
+    <div>
+        <div onclick="showSuccesToast();" class="btn btn--success" >Thanh toán</div>
+    </div>
+    <script type="text/javascript" src="../DirtyCoins/assets/js/BEM.js"></script>
 </body>
 </html>

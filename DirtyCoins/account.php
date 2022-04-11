@@ -24,7 +24,8 @@
         <aside >
             <label>Tài khoản của tôi</label><br><br>
             <div action="" method="POST" role="Form">
-                <label for="">Tên tài khoản: </label> <b><?php echo $user['username'] ?> </b>
+                <label for="" style='display:block; margin-bottom:16px;'>Tên tài khoản: <b style="margin-left:4px;"><?php echo $user['username']??null ?> </b> </label>
+                <label for="">Email đăng ký:<b style="margin-left:4px;"><?php echo $user['email']??null ?> </b> </label> 
             </div>
             <br><br>
             <a href="sign_out.php"><button class="btn1"  style="padding: 0.6em 0.8em;">Thoát</button></a>
@@ -33,7 +34,7 @@
             <h1 id="thongtintaikhoan">THÔNG TIN TÀI KHOẢN</h1><br>
             <div id="article-font-size">
                 <div action="" method="POST" role="Form">
-                    <label for="">Xin chào,</label> <b><?php echo $user['name'] ?> </b>
+                    <label for="">Xin chào,</label> <b><?php echo $user['name']??null ?> </b>
                 </div>
                 <br><br>
                 <label style="display:inline-block;margin-bottom:12px;"><b style="font-size:16px;">Đơn hàng gần nhất</b></label>  
