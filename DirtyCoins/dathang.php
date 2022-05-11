@@ -24,12 +24,10 @@
 </head>
 <body>      
             <?php if($cart_id != null){ ?>
+                <h2 class='bestseller-title' style='margin-top:72px;'>Đã thêm vào giỏ hàng</h2>
+                <div class='section-bestseller' style='overflow:hidden;'>
                 <?php while($product = $result->fetch_array()) { ?>
                         <?php 
-                        echo "
-                        <div class='section-bestseller'>
-                            <h2 class='bestseller-title' style='margin-top:66px;'>Đã được đặt hàng</h2>';
-                                <div class='product'>";
                         $ma = $product["item_id"];
                         $anh = $product["item_image"];
                         $ten = $product['item_name'];
